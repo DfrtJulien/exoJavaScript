@@ -1,4 +1,4 @@
-let number = prompt('Quel est votre moyenne ?')
+let number = parseFloat(prompt('Quel est votre moyenne ?'))
 
 
 if(number < 10){
@@ -8,6 +8,6 @@ if(number < 10){
 }else if (number >= 12 && number <= 20) {
     document.write("<h1 class='text'>" + "Avec une moyenne de " + number + " " + "vous êtes reçu avec mention !" + "</h1>");
 } else {
-    document.write("<h1 class='text'>" + "Entrez une moyenne correcte" + "</h1>")
+    document.write("<h1 class='text'>" + "Entrez une moyenne correcte" + "</h1>");
     console.log(number);
 }
