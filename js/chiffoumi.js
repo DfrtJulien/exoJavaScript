@@ -1,68 +1,59 @@
-let userMove = prompt("Entrez Pierre, Feuille ou Ciseaux").toLowerCase();
+// Déclaration de trois variables.
+let computer;
+let player;
+let random;
 
+// Récupération du choix du joueur.
+player = prompt('Que choisissez-vous : pierre, feuille ou ciseau ?');
 
-let computerMove = "";
+// Récupération d'un nombre aléatoire entre 0 et 1 inclus.
+random = Math.random();
 
-function computer(){
-    let randomNum = Math.random();
-    if(randomNum < 1/3){
-        computerMove = "pierre";
-    }else if (randomNum > 1/3 && randomNum < 3/4){
-        computerMove = "feuille";
-    } else if(randomNum > 3/4) {
-        computerMove = "ciseaux";
+//test du random
+console.log(random);
+
+if(random <= 0.33){
+    computer = 'pierre';
+}else if(random <= 0.66){
+    computer = 'feuille';
+}else{
+    computer = 'ciseau';
+}
+document.write("<p>Choix de l'ordinateur : " + computer + '</p>');
+
+if(computer == player){
+    document.write('<p>Vous avez choisi la même chose : égalité !</p>');
+}else{
+    // Le joueur et l'ordinateur n'ont pas choisi la même chose, la bataille commence !
+
+    switch(computer)
+    {
+        case 'ciseau':
+            if(player == 'pierre'){
+                document.write('<p>La pierre écrase le ciseau : vous gagnez !</p>');
+            }
+            else // player == 'feuille'
+            {
+                document.write('<p>La feuille est découpée par le ciseau : vous perdez !</p>');
+            }
+        break;
+
+        case 'feuille':
+            if(player == 'pierre'){
+                document.write('<p>La pierre est enveloppée par la feuille : vous perdez !</p>');
+            }else // player == 'ciseau'
+            {
+                document.write('<p>Le ciseau découpe la feuille : vous gagnez !</p>');
+            }
+        break;
+
+        case 'pierre':
+            if(player == 'feuille'){
+                document.write('<p>La feuille enveloppe la pierre : vous gagnez !</p>');
+            }else // player == 'ciseau'
+            {
+                document.write('<p>Le ciseau est écrasé par la pierre : vous perdez !</p>');
+            }
+        break;
     }
 }
-
-// computer()
-
-// function chiffoumi(userMove){
-//     if(userMove === 'pierre'){
-//         if(computerMove === 'Pierre'){
-//             document.write(`<p style=" font-size:20px; background-color:blue; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} égalité!</p>`)
-//         }else if(computerMove === 'Feuille'){
-//             document.write(`<p style=" font-size:20px; background-color:red; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu perds!</p>`)
-//         }else {
-//             document.write(`<p style=" font-size:20px; background-color:green; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu gagne!</p>`)
-//         }
-//     }else if (userMove === 'feuille'){
-//         if(computerMove === 'Pierre'){
-//             document.write(`<p style=" font-size:20px; background-color:green; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu gagne!</p>`)
-//         }else if(computerMove === 'Feuille'){
-//             document.write(`<p style=" font-size:20px; background-color:blue; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} égalité!</p>`)
-//         }else {
-//             document.write(`<p style=" font-size:20px; background-color:red; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu perds!</p>`)
-//         }
-//     }else if (userMove === 'ciseaux'){
-//         if(computerMove === 'Pierre'){
-//             document.write(`<p style=" font-size:20px; background-color:red; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu perds!</p>`)
-//         }else if(computerMove === 'Feuille'){
-//             document.write(`<p style=" font-size:20px; background-color:green; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu gagne!</p>`)
-//         }else {
-//             document.write(`<p style=" font-size:20px; background-color:blue; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} égalité!</p>`)
-//         }
-//     }else {
-//         document.write(`<p style=" font-size:20px; background-color:blue; color:white; padding:20px; text-align:center">écrivez correctement Pierre Feuille ou Ciseaux!</p>`)
-//     }
-// }
-
-function chiffoumi(userMove){
-    computer()
-    if((userMove === "feuille") || (userMove === "pierre") || (userMove === "ciseaux")){
-        if(userMove === computerMove){
-            document.write(`<p style=" font-size:20px; background-color:blue; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} égalité!</p>`)
-        }else if((computerMove === "pierre") && (userMove === "feuille") || (computerMove === "ciseaux") && (userMove === "pierre") || (computerMove === "feuille") && (userMove === "ciseaux")){
-            document.write(`<p style=" font-size:20px; background-color:green; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu gagne!</p>`)
-        }else {
-            document.write(`<p style=" font-size:20px; background-color:red; color:white; padding:20px; text-align:center">Tu a choisis ${userMove} L'IA a choisis ${computerMove} tu perds!</p>`)
-        }
-    }else {
-        document.write(`<p style=" font-size:20px; background-color:black; color:white; padding:20px; text-align:center">écrivez correctement Pierre Feuille ou Ciseaux!</p>`)
-    }
-}
-
-
-console.log(userMove);
-console.log(computerMove);
-chiffoumi(userMove);
-
